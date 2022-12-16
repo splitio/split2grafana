@@ -1,8 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
 
-const GRAFANA_URL = 'http://<your grafana server host>:<grafana server port>';
-
 exports.handler = async (event) => {
     const startTimeInMillis = new Date().getTime();
     console.log(event);
@@ -17,6 +15,7 @@ exports.handler = async (event) => {
     console.log('link: ' + link);
 
     const grafanaApiKey = fs.readFileSync('GRAFANA_API_KEY', 'utf8').trim();
+    const grafanaUrl = fs.readFileSync('GRAFANA_URL', 'utf8').trim();
 
     const annotation = {
         // Use a Dashboard annotation query to bring in 'split' tagged annotations
@@ -28,7 +27,7 @@ exports.handler = async (event) => {
     }
 
     console.log(annotation);
-    await axios.post(GRAFANA_URL + '/api/annotations', annotation, { headers: {'Authorization': 'Bearer ' + grafanaApiKey }}) 
+    await axios.post(grafanaUrl + '/api/annotations', annotation, { headers: {'Authorization': 'Bearer ' + grafanaApiKey }}) 
     .then(function (response) {
         console.log(response.status);
     })

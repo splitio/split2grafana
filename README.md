@@ -12,18 +12,23 @@ Clone the repository in an empty directory.
 
 Inside the directory created, copy your Grafana API key (carefully) into:
 
- - *GRAFANA_API_KEY* (I used admin)
+ - GRAFANA_API_KEY (I used admin)
 
-An extra space at the end of the line, or empty lines after could spell disaster later.
-The file must have precisely this name.
+Copy the host and port of your Grafana server into a file:
 
- - Edit index.js to include your Grafana host and port
+ - GRAFANA_URL
 
-Line four of the index.js:
+No trailing slash!  
 
 ```javascript
-const GRAFANA_URL = 'http://<your grafana server host>:3000';
+http://your.grafana.host.or.ip:3000
 ```
+
+Three thousand is the default port; change as appropriate. Do not add a trailing slash.
+
+An extra space at the end of the line, or empty lines after could spell disaster later.
+
+The files must have precisely these names.
 
 Change this to the proper host and port of your Grafana server (port 3000 is the default port).  The host must be accessible from AWS.
 
