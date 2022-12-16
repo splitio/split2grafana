@@ -21,7 +21,9 @@ The file must have precisely this name.
 
 Line four of the index.js:
 
+```javascript
 const GRAFANA_URL = 'http://<your grafana server host>:3000';
+```
 
 Change this to the proper host and port of your Grafana server (port 3000 is the default port).  The host must be accessible from AWS.
 
